@@ -1,0 +1,131 @@
+--- Analysis started at 2026-04-10 23:11:40.520505 ---
+## Document: Battiston et al. - 2020 - Networks beyond pairwise interactions structure and dynamics.md
+Total length: 537821 characters
+
+### Strategy: fixed_size
+- Number of chunks: 1921
+- Average chunk length: 299.96
+- Sample chunks (10th and 11th):
+   1. rwise interactions. We first discuss the methods to represent higher-order interactions and give a u...
+   2. measures designed to characterize the structure of these systems, and the models proposed in the lit...
+
+### Strategy: by_sentences
+- Number of chunks: 1800
+- Average chunk length: 297.10
+- Sample chunks (10th and 11th):
+   1. Evolving simplicial complexes 16 3. Other measures of shape in simplicial complexes 17 E. Higher-ord...
+   2. Hypergraph Laplacians 18 2. Combinatorial Laplacians 18   IV. Models 20 A.
+
+### Strategy: recursive
+- Number of chunks: 2572
+- Average chunk length: 209.11
+- Sample chunks (10th and 11th):
+   1. face-to-face human communication, chemical reactions and ecological systems, interactions can occur ...
+   2. recently, little attention has been devoted to the higher-order architecture of real complex systems...
+
+--------------------------------------------------
+
+## Document: Cai et al. - 2021 - Dynamic causal brain circuits during working memory and their functional controllability.md
+Total length: 105297 characters
+
+### Strategy: fixed_size
+- Number of chunks: 376
+- Average chunk length: 299.99
+- Sample chunks (10th and 11th):
+   1. any psychiatric disorders, including schizophrenia and attention deficit hyperactivity disorder [7][...
+   2. t operates in the human brain are poorly understood. In particular, little is known about dynamic ca...
+
+### Strategy: by_sentences
+- Number of chunks: 470
+- Average chunk length: 222.74
+- Sample chunks (10th and 11th):
+   1. Since then, non-human electrophysiological studies and human neuroimaging studies have consistently ...
+   2. In contrast, the posterior cingulate cortex (PCC) and ventromedial prefrontal cortex (VMPFC) encompa...
+
+### Strategy: recursive
+- Number of chunks: 466
+- Average chunk length: 225.96
+- Sample chunks (10th and 11th):
+   1.  NATURE COMMUNICATIONS | (2021) 12:3314 | https://doi.org/10.1038/s41467-021-23509-x | www.nature.co...
+   2. lmost all cognitively demanding tasks depend on working memory, the ability to maintain and manipula...
+
+--------------------------------------------------
+
+## Document: Deng et al. - 2025 - Causal fMRI-Mamba Causal State Space Model for Neural Decoding and Brain Task States Recognition.md
+Total length: 32770 characters
+
+### Strategy: fixed_size
+- Number of chunks: 117
+- Average chunk length: 299.91
+- Sample chunks (10th and 11th):
+   1. valuable information for understanding the brain function. Among them, fMRI achieves localization of...
+   2. . In the past decade, machine learning-based multivoxel pattern analysis (MVPA) [4] has been widely ...
+
+### Strategy: by_sentences
+- Number of chunks: 63
+- Average chunk length: 518.06
+- Sample chunks (10th and 11th):
+   1. The causal disentangle module is explained in Section II-C. II. METHODOLOGY   In this section, we in...
+   2. As shown in Fig.1. _A._ _Embedding_ _for_ _fMRI_  Since the input fMRI data _X_ _∈_ R _[T][ ×][H][×]...
+
+### Strategy: recursive
+- Number of chunks: 165
+- Average chunk length: 198.61
+- Sample chunks (10th and 11th):
+   1. **brain task state classification task, Causal fMRI-Mamba achieves** **better performance and genera...
+   2.  _**Index**_ _**Terms**_ **—Neuro-decoding,** **state** **space** **model,** **causal** **rep-** **r...
+
+--------------------------------------------------
+
+## Document: Ji et al. - 2022 - FC-HAT Hypergraph attention network for functional brain network classification.md
+Total length: 70524 characters
+
+### Strategy: fixed_size
+- Number of chunks: 252
+- Average chunk length: 299.78
+- Sample chunks (10th and 11th):
+   1. nctional interactions [13]. The connections within the network indicate specific topological propert...
+   2. bnormal functional connections has been widely used in the classification of brain diseases, such as...
+
+### Strategy: by_sentences
+- Number of chunks: 245
+- Average chunk length: 286.22
+- Sample chunks (10th and 11th):
+   1. Lei Information Sciences 608 (2022) 1301–1316   that reveal discriminative information in brain netw...
+   2. Later methods leveraged convolutional neural networks (CNNs) to extract the structural information o...
+
+### Strategy: recursive
+- Number of chunks: 356
+- Average chunk length: 198.10
+- Sample chunks (10th and 11th):
+   1.                - 2022 Elsevier Inc. All rights reserved.    
+   2. The study of functional connectivity in human brains has drawn increasing attention in the fields of...
+
+--------------------------------------------------
+
+## Document: Rubinov and Sporns - 2010 - Complex network measures of brain connectivity Uses and interpretations.md
+Total length: 51559 characters
+
+### Strategy: fixed_size
+- Number of chunks: 185
+- Average chunk length: 298.59
+- Sample chunks (10th and 11th):
+   1. ns. Complex network analysis has its origins in the mathematical study of networks, known as graph t...
+   2. ity datasets comprise networks of brain regions connected by anatomical tracts or by functional asso...
+
+### Strategy: by_sentences
+- Number of chunks: 225
+- Average chunk length: 227.19
+- Sample chunks (10th and 11th):
+   1. 1060 M. Rubinov, O. Sporns / NeuroImage 52 (2010) 1059–1069    Note that while we concentrate on the...
+   2. For instance, small-scale brain networks could consist of neurons linked by synapses or of cortical ...
+
+### Strategy: recursive
+- Number of chunks: 240
+- Average chunk length: 214.83
+- Sample chunks (10th and 11th):
+   1.   
+   2. Modern brain mapping techniques—such as diffusion MRI, functional MRI, EEG, and MEG—produce increasi...
+
+--------------------------------------------------
+

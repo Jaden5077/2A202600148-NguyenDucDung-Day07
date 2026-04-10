@@ -1,0 +1,131 @@
+--- Analysis started at 2026-04-10 23:10:13.567539 ---
+## Document: Battiston et al. - 2020 - Networks beyond pairwise interactions structure and dynamics.md
+Total length: 537821 characters
+
+### Strategy: fixed_size
+- Number of chunks: 1121
+- Average chunk length: 499.75
+- Sample chunks (10th and 11th):
+   1.  Hypergraph Laplacians 18 2. Combinatorial Laplacians 18   IV. Models 20 A. Equilibrium models 21 1....
+   2. s on simplicial complexes 39 2. Random walks on hypergraphs 40   VI. Synchronization 43 A. Phase osc...
+
+### Strategy: by_sentences
+- Number of chunks: 1800
+- Average chunk length: 297.10
+- Sample chunks (10th and 11th):
+   1. Evolving simplicial complexes 16 3. Other measures of shape in simplicial complexes 17 E. Higher-ord...
+   2. Hypergraph Laplacians 18 2. Combinatorial Laplacians 18   IV. Models 20 A.
+
+### Strategy: recursive
+- Number of chunks: 1448
+- Average chunk length: 371.42
+- Sample chunks (10th and 11th):
+   1.  III. Measures 9 A. Matrix representations of higher-order systems 10 1. Incidence matrix 10 2. Adja...
+   2. E. Higher-order Laplacian operators 17 1. Hypergraph Laplacians 18 2. Combinatorial Laplacians 18  
+
+--------------------------------------------------
+
+## Document: Cai et al. - 2021 - Dynamic causal brain circuits during working memory and their functional controllability.md
+Total length: 105297 characters
+
+### Strategy: fixed_size
+- Number of chunks: 220
+- Average chunk length: 498.53
+- Sample chunks (10th and 11th):
+   1. king memory using fast temporal-resolution (subsecond) fMRI data and a large sample of well-characte...
+   2. tial to inform how asymmetries and hierarchies in directed influence allow individual networks or sp...
+
+### Strategy: by_sentences
+- Number of chunks: 470
+- Average chunk length: 222.74
+- Sample chunks (10th and 11th):
+   1. Since then, non-human electrophysiological studies and human neuroimaging studies have consistently ...
+   2. In contrast, the posterior cingulate cortex (PCC) and ventromedial prefrontal cortex (VMPFC) encompa...
+
+### Strategy: recursive
+- Number of chunks: 280
+- Average chunk length: 376.06
+- Sample chunks (10th and 11th):
+   1. brain are poorly understood. In particular, little is known about dynamic causal and asymmetric inte...
+   2. (HCP) [12] to investigate causal dynamic circuit mechanisms involving cognitive control systems cons...
+
+--------------------------------------------------
+
+## Document: Deng et al. - 2025 - Causal fMRI-Mamba Causal State Space Model for Neural Decoding and Brain Task States Recognition.md
+Total length: 32770 characters
+
+### Strategy: fixed_size
+- Number of chunks: 69
+- Average chunk length: 494.64
+- Sample chunks (10th and 11th):
+   1. s encounter out-of-distribution (OOD) issue due to individual differences  [11], which undermines ge...
+   2. ting noise and individual differences. Specifically, the main contributions of this paper are as fol...
+
+### Strategy: by_sentences
+- Number of chunks: 63
+- Average chunk length: 518.06
+- Sample chunks (10th and 11th):
+   1. The causal disentangle module is explained in Section II-C. II. METHODOLOGY   In this section, we in...
+   2. As shown in Fig.1. _A._ _Embedding_ _for_ _fMRI_  Since the input fMRI data _X_ _∈_ R _[T][ ×][H][×]...
+
+### Strategy: recursive
+- Number of chunks: 99
+- Average chunk length: 331.01
+- Sample chunks (10th and 11th):
+   1. oxygen level-dependent (BOLD) [3], making it increasingly significant in exploring brain activity me...
+   2. fMRI data, SVM-MVPA performs poorly when handling such high-dimensional data. To address this issue,...
+
+--------------------------------------------------
+
+## Document: Ji et al. - 2022 - FC-HAT Hypergraph attention network for functional brain network classification.md
+Total length: 70524 characters
+
+### Strategy: fixed_size
+- Number of chunks: 147
+- Average chunk length: 499.62
+- Sample chunks (10th and 11th):
+   1. ivity matrix. For example, BrainNetCNN [16] and its variants  [11,12] redefine three types of convol...
+   2. equently, they have been successfully applied to many brain network analysis tasks [20,40]. The basi...
+
+### Strategy: by_sentences
+- Number of chunks: 245
+- Average chunk length: 286.22
+- Sample chunks (10th and 11th):
+   1. Lei Information Sciences 608 (2022) 1301–1316   that reveal discriminative information in brain netw...
+   2. Later methods leveraged convolutional neural networks (CNNs) to extract the structural information o...
+
+### Strategy: recursive
+- Number of chunks: 198
+- Average chunk length: 356.18
+- Sample chunks (10th and 11th):
+   1.  ⇑ Corresponding author at:Beijing Municipal Key Laboratory of Multimedia and Intelligent Software T...
+   2.  [https://doi.org/10.1016/j.ins.2022.07.041](https://doi.org/10.1016/j.ins.2022.07.041) 0020-0255/� ...
+
+--------------------------------------------------
+
+## Document: Rubinov and Sporns - 2010 - Complex network measures of brain connectivity Uses and interpretations.md
+Total length: 51559 characters
+
+### Strategy: fixed_size
+- Number of chunks: 108
+- Average chunk length: 497.21
+- Sample chunks (10th and 11th):
+   1. ysis of brain connectivity and outline important conceptual issues associated with its use. We begin...
+   2. e measures, as well as their weighted and directed variants (Table A1). Finally, we discuss some of ...
+
+### Strategy: by_sentences
+- Number of chunks: 225
+- Average chunk length: 227.19
+- Sample chunks (10th and 11th):
+   1. 1060 M. Rubinov, O. Sporns / NeuroImage 52 (2010) 1059–1069    Note that while we concentrate on the...
+   2. For instance, small-scale brain networks could consist of neurons linked by synapses or of cortical ...
+
+### Strategy: recursive
+- Number of chunks: 151
+- Average chunk length: 341.45
+- Sample chunks (10th and 11th):
+   1.  ⁎ Corresponding author. E-mail address: [osporns@indiana.edu](mailto:osporns@indiana.edu) (O. Sporn...
+   2. Reijneveld, 2007; Bullmore and Sporns, 2009) and rests on several important motivations. First, comp...
+
+--------------------------------------------------
+
