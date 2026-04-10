@@ -83,7 +83,7 @@
 
 Chạy `ChunkingStrategyComparator().compare()` trên 2-3 tài liệu:
 
-chunk_size=300
+**chunk_size=300**
 Các file log:
 
 - logs\report_20260410_224907.md
@@ -119,12 +119,33 @@ Các file log:
 # Paste implementation here
 ```
 
+**chunk_size=500**
+Các file log:
+
+- analysis_20260410_230553.log
+- report_20260410_230553.md
+
+| Tài liệu                | Strategy     | Chunk Count | Avg Length |
+| :---------------------- | :----------- | :---------- | :--------- |
+| Battiston et al. - 2020 | fixed_size   | 1121        | 499.75     |
+| Battiston et al. - 2020 | by_sentences | 1800        | 297.10     |
+| Battiston et al. - 2020 | recursive    | 1448        | 371.42     |
+| Cai et al. - 2021       | fixed_size   | 220         | 498.53     |
+| Cai et al. - 2021       | by_sentences | 470         | 222.74     |
+| Cai et al. - 2021       | recursive    | 280         | 376.06     |
+
 ### So Sánh: Strategy của tôi vs Baseline
 
-| Tài liệu                    | Strategy   | Chunk Count | Avg Length | Retrieval Quality? |
-| --------------------------- | ---------- | ----------- | ---------- | ------------------ |
-| **Battiston et al. (2020)** | fixed_size | 1,921       | 299.96     | Thấp (cắt vụn từ)  |
-|                             | recursive  | 2,572       | 209.11     | Cao (giữ đoạn)     |
+| Tài liệu             | Strategy (chunk size) | Chunk Count | Avg Length | Nhận xét chất lượng                                                              |
+| :------------------- | :-------------------- | :---------- | :--------- | :------------------------------------------------------------------------------- |
+| **Battiston et al.** | **Recursive (500)**   | 1448        | 371.42     | **Tối ưu nhất:** Giữ nguyên cấu trúc đoạn văn khoa học, đủ ngữ cảnh để LLM hiểu. |
+|                      | Fixed Size (500)      | 1121        | 499.75     | Dễ cắt đôi công thức hoặc tên tác giả ở giữa câu.                                |
+|                      | Recursive (300)       | 2572        | 209.11     | Khá vụn, nhưng vẫn giữ được tiêu đề và các mục liệt kê.                          |
+|                      | Fixed Size (300)      | 1921        | 299.96     | Hiệu suất lấp đầy cao nhưng nội dung bị ngắt quãng vô tội vạ.                    |
+| **Cai et al.**       | **Recursive (500)**   | 280         | 376.06     | **Tốt:** Cân bằng giữa số lượng mảnh và độ dài thông tin mỗi mảnh.               |
+|                      | Fixed Size (500)      | 220         | 498.53     | Số mảnh ít nhất nhưng rủi ro mất ngữ cảnh tại điểm cắt là cao nhất.              |
+|                      | Recursive (300)       | 466         | 225.96     | Chi tiết, phù hợp nếu bài báo có nhiều phân đoạn nhỏ.                            |
+|                      | Fixed Size (300)      | 376         | 299.99     | Cắt cứng 300 ký tự, thường xuyên ngắt giữa câu.                                  |
 
 ### So Sánh Với Thành Viên Khác
 
