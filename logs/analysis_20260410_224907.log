@@ -1,0 +1,131 @@
+--- Analysis started at 2026-04-10 22:49:07.375903 ---
+## Document: Battiston et al. - 2020 - Networks beyond pairwise interactions structure and dynamics.md
+Total length: 537821 characters
+
+### Strategy: fixed_size
+- Number of chunks: 1921
+- Average chunk length: 299.96
+- Sample chunks (first 2):
+   1. **Networks** **beyond** **pairwise** **interactions:** **structure** **and** **dynamics**   Federico...
+   2. uno_ _Kessler,_ _Via_ _Sommarive_ _18,_ _38123,_ _Povo,_ _TN,_ _Italy_   Iacopo Iacopini _School_ _o...
+
+### Strategy: by_sentences
+- Number of chunks: 1800
+- Average chunk length: 297.10
+- Sample chunks (first 2):
+   1. **Networks** **beyond** **pairwise** **interactions:** **structure** **and** **dynamics**   Federico...
+   2. Until recently, little attention has been devoted to the higher-order architecture of real complex s...
+
+### Strategy: recursive
+- Number of chunks: 2572
+- Average chunk length: 209.11
+- Sample chunks (first 2):
+   1. **Networks** **beyond** **pairwise** **interactions:** **structure** **and** **dynamics**   Federico...
+   2.  Giulia Cencetti _Mobs_ _Lab,_ _Fondazione_ _Bruno_ _Kessler,_ _Via_ _Sommarive_ _18,_ _38123,_ _Pov...
+
+--------------------------------------------------
+
+## Document: Cai et al. - 2021 - Dynamic causal brain circuits during working memory and their functional controllability.md
+Total length: 105297 characters
+
+### Strategy: fixed_size
+- Number of chunks: 376
+- Average chunk length: 299.99
+- Sample chunks (first 2):
+   1. #### ARTICLE  https://doi.org/10.1038/s41467-021-23509-x **OPEN** ## Dynamic causal brain circuits d...
+   2.  associated with working memory play a central role in human cognition,  but their underlying dynami...
+
+### Strategy: by_sentences
+- Number of chunks: 470
+- Average chunk length: 222.74
+- Sample chunks (first 2):
+   1. #### ARTICLE  https://doi.org/10.1038/s41467-021-23509-x **OPEN** ## Dynamic causal brain circuits d...
+   2. Network analysis of directed causal influences suggests the anterior insula node of the SN and dorso...
+
+### Strategy: recursive
+- Number of chunks: 466
+- Average chunk length: 225.96
+- Sample chunks (first 2):
+   1. #### ARTICLE  https://doi.org/10.1038/s41467-021-23509-x **OPEN** ## Dynamic causal brain circuits d...
+   2.  Control processes associated with working memory play a central role in human cognition,  
+
+--------------------------------------------------
+
+## Document: Deng et al. - 2025 - Causal fMRI-Mamba Causal State Space Model for Neural Decoding and Brain Task States Recognition.md
+Total length: 32770 characters
+
+### Strategy: fixed_size
+- Number of chunks: 117
+- Average chunk length: 299.91
+- Sample chunks (first 2):
+   1. # Causal fMRI-Mamba: Causal State Space Model for Neural Decoding and Brain Task States Recognition ...
+   2. niversity,_ _China_ 2 _Jiangsu_ _Engineering_ _Research_ _Center_ _of_ _Big_ _Data_ _Ubiquitous_ _Pe...
+
+### Strategy: by_sentences
+- Number of chunks: 63
+- Average chunk length: 518.06
+- Sample chunks (first 2):
+   1. # Causal fMRI-Mamba: Causal State Space Model for Neural Decoding and Brain Task States Recognition ...
+   2. Among them, fMRI achieves localization of active brain regions with high spatial resolution, by moni...
+
+### Strategy: recursive
+- Number of chunks: 165
+- Average chunk length: 198.61
+- Sample chunks (first 2):
+   1. # Causal fMRI-Mamba: Causal State Space Model for Neural Decoding and Brain Task States Recognition ...
+   2. 1 _School_ _of_ _Computer_ _Science_ _and_ _Communication_ _Engineering,_ _JiangSu_ _University,_ _C...
+
+--------------------------------------------------
+
+## Document: Ji et al. - 2022 - FC-HAT Hypergraph attention network for functional brain network classification.md
+Total length: 70524 characters
+
+### Strategy: fixed_size
+- Number of chunks: 252
+- Average chunk length: 299.78
+- Sample chunks (first 2):
+   1. Information Sciences [608](https://doi.org/10.1016/j.ins.2022.07.041) (2022) 1301–1316   Contents li...
+   2. r.com/locate/ins)  ## FC–HAT: Hypergraph attention network for functional brain network classificati...
+
+### Strategy: by_sentences
+- Number of chunks: 245
+- Average chunk length: 286.22
+- Sample chunks (first 2):
+   1. Information Sciences [608](https://doi.org/10.1016/j.ins.2022.07.041) (2022) 1301–1316   Contents li...
+   2. However, current methods remain limited in exploring the high-order structural information of brain ...
+
+### Strategy: recursive
+- Number of chunks: 356
+- Average chunk length: 198.10
+- Sample chunks (first 2):
+   1. Information Sciences [608](https://doi.org/10.1016/j.ins.2022.07.041) (2022) 1301–1316   Contents li...
+   2. ## FC–HAT: Hypergraph attention network for functional brain network classification   Junzhong Ji [a...
+
+--------------------------------------------------
+
+## Document: Rubinov and Sporns - 2010 - Complex network measures of brain connectivity Uses and interpretations.md
+Total length: 51559 characters
+
+### Strategy: fixed_size
+- Number of chunks: 185
+- Average chunk length: 298.59
+- Sample chunks (first 2):
+   1. NeuroImage 52 (2010) 1059–1069   Contents lists available at [ScienceDirect](http://www.sciencedirec...
+   2. l Rubinov [a][,][b][,][c], Olaf Sporns [d][,] ⁎   a Black Dog Institute and School of Psychiatry, Un...
+
+### Strategy: by_sentences
+- Number of chunks: 225
+- Average chunk length: 227.19
+- Sample chunks (first 2):
+   1. NeuroImage 52 (2010) 1059–1069   Contents lists available at [ScienceDirect](http://www.sciencedirec...
+   2. We describe measures that variously detect functional integration and segregation, quantify centrali...
+
+### Strategy: recursive
+- Number of chunks: 240
+- Average chunk length: 214.83
+- Sample chunks (first 2):
+   1. NeuroImage 52 (2010) 1059–1069   Contents lists available at [ScienceDirect](http://www.sciencedirec...
+   2.  Mikail Rubinov [a][,][b][,][c], Olaf Sporns [d][,] ⁎  
+
+--------------------------------------------------
+

@@ -83,18 +83,24 @@
 
 Chạy `ChunkingStrategyComparator().compare()` trên 2-3 tài liệu:
 
-| Tài liệu                    | Strategy                         | Chunk Count | Avg Length | Preserves Context?                             |
-| :-------------------------- | :------------------------------- | :---------- | :--------- | :--------------------------------------------- |
-| **Battiston et al. (2020)** | FixedSizeChunker (`fixed_size`)  | 1.921       | 299.96     | Thường cắt ngang từ/câu                        |
-|                             | SentenceChunker (`by_sentences`) | 1.800       | 297.10     | Mất ngữ cảnh đoạn.                             |
-|                             | RecursiveChunker (`recursive`)   | 2.572       | 209.11     | Ổn hơn, giữ được cấu trúc đoạn văn và tiêu đề. |
-| **Cai et al. (2021)**       | FixedSizeChunker (`fixed_size`)  | 376         | 299.99     | Như trên                                       |
-|                             | SentenceChunker (`by_sentences`) | 470         | 222.74     | Như trên                                       |
-|                             | RecursiveChunker (`recursive`)   | 466         | 225.96     | Như trên                                       |
+chunk_size=300
+Các file log:
+
+- logs\report_20260410_224907.md
+- logs\analysis_20260410_224907.log
+
+| Tài liệu                    | Strategy     | Chunk Count | Avg Length | Preserves Context?                             |
+| :-------------------------- | :----------- | :---------- | :--------- | :--------------------------------------------- |
+| **Battiston et al. (2020)** | fixed_size   | 1921        | 299.96     | Thường cắt ngang từ/câu                        |
+|                             | by_sentences | 1800        | 297.10     | Mất ngữ cảnh đoạn.                             |
+|                             | recursive    | 2572        | 209.11     | Ổn hơn, giữ được cấu trúc đoạn văn và tiêu đề. |
+| **Cai et al. (2021)**       | fixed_size   | 376         | 299.99     | Như trên                                       |
+|                             | by_sentences | 470         | 222.74     | Như trên                                       |
+|                             | recursive    | 466         | 225.96     | Như trên                                       |
 
 ### Strategy Của Tôi
 
-**Loại:** RecursiveChunker
+**Loại:** recursive
 
 **Mô tả cách hoạt động:**
 
