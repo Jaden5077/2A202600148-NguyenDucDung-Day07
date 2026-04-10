@@ -16,11 +16,6 @@ No math required — explain conceptually:
 
 > **Ghi kết quả vào:** Report — Section 1 (Warm-up)
 
-- Khi 2 vector có high cosine similarity, chúng tương đồng về hướng, và có nghĩa gần giống nhau.
-- Ví dụ: "hôm nay trời nắng" và "hôm nay trời quang"
-- Phản ví dụ: "hôm nay trời nắng" và "hôm nay trời mưa"
-- Cosine similarity phản ánh sự tương đồng về hướng của các vector, và hướng hướng của embedding phản ánh nghĩa của nó; còn Euclidean distance liên quan đến độ dài vector.
-
 ---
 
 ### Exercise 1.2 — Chunking Math
@@ -30,10 +25,6 @@ No math required — explain conceptually:
 - If overlap is increased to 100, how does this change the chunk count? Why would you want more overlap?
 
 > **Ghi kết quả vào:** Report — Section 1 (Warm-up)
-
-- Số chunk: (10000 - 50) / (500 - 50) = 22.11 => 23 chunks
-- Nếu overlap tăng lên 100, số chunk: (10000 - 100) / (500 - 100) = 24.75 => 25 chunks
-- Tăng overlap làm tăng số chunk, nhưng mỗi chunk dài ra giúp kéo dài ngữ cảnh.
 
 ---
 
