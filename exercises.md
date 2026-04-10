@@ -15,6 +15,11 @@ No math required — explain conceptually:
 
 > **Ghi kết quả vào:** Report — Section 1 (Warm-up)
 
+- Khi 2 vector có high cosine similarity, chúng tương đồng về hướng, và có nghĩa gần giống nhau.
+- Ví dụ: "hôm nay trời nắng" và "hôm nay trời quang"
+- Phản ví dụ: "hôm nay trời nắng" và "hôm nay trời mưa"
+- Cosine similarity phản ánh sự tương đồng về hướng của các vector, và hướng hướng của embedding phản ánh nghĩa của nó; còn Euclidean distance liên quan đến độ dài vector.
+
 ---
 
 ### Exercise 1.2 — Chunking Math
