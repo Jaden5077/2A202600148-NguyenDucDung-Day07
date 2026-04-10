@@ -1,4 +1,5 @@
 # Day 7 — Exercises
+
 ## Data Foundations: Embedding & Vector Store | Lab Worksheet
 
 ---
@@ -30,6 +31,10 @@ No math required — explain conceptually:
 
 > **Ghi kết quả vào:** Report — Section 1 (Warm-up)
 
+- Số chunk: (10000 - 50) / (500 - 50) = 22.11 => 23 chunks
+- Nếu overlap tăng lên 100, số chunk: (10000 - 100) / (500 - 100) = 24.75 => 25 chunks
+- Tăng overlap làm tăng số chunk, nhưng mỗi chunk dài ra giúp kéo dài ngữ cảnh.
+
 ---
 
 ## Part 2 — Core Coding (Cá nhân)
@@ -39,6 +44,7 @@ Implement all TODOs in `src/chunking.py`, `src/store.py`, và `src/agent.py`. `D
 Run `pytest tests/` to check progress.
 
 ### Checklist
+
 - [x] `Document` dataclass — ĐÃ IMPLEMENT SẴN
 - [x] `FixedSizeChunker` — ĐÃ IMPLEMENT SẴN
 - [ ] `SentenceChunker` — split on sentence boundaries, group into chunks
@@ -69,19 +75,20 @@ Mỗi nhóm chọn một domain và chuẩn bị bộ tài liệu:
 **Step 2 — Thu thập 5-10 tài liệu.** Lưu dưới dạng `.txt` hoặc `.md` vào thư mục `data/`.
 
 > **Tip chuyển PDF sang Markdown:**
+>
 > - `pip install marker-pdf` → `marker_single input.pdf output/` (chất lượng cao, giữ cấu trúc)
 > - `pip install pymupdf4llm` → `pymupdf4llm.to_markdown("input.pdf")` (nhanh, đơn giản)
 > - Hoặc copy-paste nội dung từ PDF/web vào file `.txt`
 
 Ghi vào bảng:
 
-| # | Tên tài liệu | Nguồn | Số ký tự | Metadata đã gán |
-|---|--------------|-------|----------|-----------------|
-| 1 | | | | |
-| 2 | | | | |
-| 3 | | | | |
-| 4 | | | | |
-| 5 | | | | |
+| #   | Tên tài liệu | Nguồn | Số ký tự | Metadata đã gán |
+| --- | ------------ | ----- | -------- | --------------- |
+| 1   |              |       |          |                 |
+| 2   |              |       |          |                 |
+| 3   |              |       |          |                 |
+| 4   |              |       |          |                 |
+| 5   |              |       |          |                 |
 
 **Step 3 — Thiết kế metadata schema:** Mỗi tài liệu cần ít nhất 2 trường metadata hữu ích (e.g., `category`, `date`, `source`, `language`, `difficulty`).
 
@@ -96,6 +103,7 @@ Mỗi thành viên **tự chọn strategy riêng** để thử trên cùng bộ 
 **Step 1 — Baseline:** Chạy `ChunkingStrategyComparator().compare()` trên 2-3 tài liệu. Ghi kết quả.
 
 **Step 2 — Chọn hoặc thiết kế strategy của bạn:**
+
 - Dùng 1 trong 3 built-in strategies với tham số tối ưu, HOẶC
 - Thiết kế custom strategy cho domain (ví dụ: chunk by Q&A pairs, by sections, by headers)
 - Mỗi thành viên nên thử strategy **khác nhau** để có gì so sánh
@@ -122,15 +130,16 @@ class CustomChunker:
 
 Mỗi nhóm viết **đúng 5 benchmark queries** kèm **gold answers**.
 
-| # | Query | Gold Answer (câu trả lời đúng) | Chunk nào chứa thông tin? |
-|---|-------|-------------------------------|--------------------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
+| #   | Query | Gold Answer (câu trả lời đúng) | Chunk nào chứa thông tin? |
+| --- | ----- | ------------------------------ | ------------------------- |
+| 1   |       |                                |                           |
+| 2   |       |                                |                           |
+| 3   |       |                                |                           |
+| 4   |       |                                |                           |
+| 5   |       |                                |                           |
 
 **Yêu cầu:**
+
 - Queries phải đa dạng (không hỏi 5 câu giống nhau)
 - Gold answers phải cụ thể và có thể verify từ tài liệu
 - Ít nhất 1 query yêu cầu metadata filtering để trả lời tốt
@@ -152,6 +161,7 @@ Call `compute_similarity()` on 5 pairs of sentences. **Before running**, predict
 **Step 1:** Mỗi thành viên chạy 5 benchmark queries với strategy riêng. Ghi kết quả top-3 cho mỗi query.
 
 **Step 2:** So sánh kết quả trong nhóm:
+
 - Strategy nào cho retrieval tốt nhất? Tại sao?
 - Có query nào mà strategy A tốt hơn B nhưng ngược lại ở query khác?
 - Metadata filtering có giúp ích không?
@@ -166,6 +176,7 @@ Call `compute_similarity()` on 5 pairs of sentences. **Before running**, predict
 ### Exercise 3.5 — Failure Analysis
 
 Tìm ít nhất **1 failure case** trong quá trình so sánh. Mô tả:
+
 - Query nào retrieval thất bại?
 - Tại sao? (chunk quá nhỏ/lớn, metadata thiếu, query mơ hồ, v.v.)
 - Đề xuất cải thiện?
