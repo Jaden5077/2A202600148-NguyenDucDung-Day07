@@ -149,15 +149,19 @@ Các file log:
 
 ### So Sánh Với Thành Viên Khác
 
-| Thành viên | Strategy | Retrieval Score (/10) | Điểm mạnh | Điểm yếu |
-| ---------- | -------- | --------------------- | --------- | -------- |
-| Tôi        |          |                       |           |          |
-| [Tên]      |          |                       |           |          |
-| [Tên]      |          |                       |           |          |
+| Thành viên           | Strategy                   | Retrieval Score (/10) | Điểm mạnh                       | Điểm yếu                    |
+| :------------------- | :------------------------- | :-------------------- | :------------------------------ | :-------------------------- |
+| Huỳnh Thái Bảo       | Baseline (Fixed + Overlap) | 5.0                   | Nhanh, phủ hết text             | Cắt ngang câu/từ, nhiễu cao |
+| Trương Minh Tiền     | Sentence-based             | 8.5                   | Giữ câu trọn vẹn                | Độ dài không đồng đều       |
+| Nguyễn Đức Dũng      | Recursive                  | 7.5                   | Giữ ngữ cảnh                    | Vẫn cắt ý                   |
+| Phạm Đoàn Phương Anh | Semantic                   | 9.0                   | Ý nghĩa thống nhất              | Tốn tài nguyên tính toán    |
+| Nguyễn Đức Trí       | Recursive                  | 8.0                   | Cân bằng ngữ cảnh và kích thước | Cần tinh chỉnh separators   |
 
 **Strategy nào tốt nhất cho domain này? Tại sao?**
 
 > _Viết 2-3 câu:_
+
+- Có vẻ như là Semantic Chunking, vì nó giữ đúng cấu trúc paper.
 
 ---
 
@@ -205,17 +209,27 @@ Agent triển khai pattern RAG chuẩn: nhận câu hỏi -> search `top_k` chun
 
 ## 5. Similarity Predictions — Cá nhân (5 điểm)
 
-| Pair | Sentence A                           | Sentence B                                | Dự đoán | Actual Score (Mock) | Đúng? |
-| ---- | ------------------------------------ | ----------------------------------------- | ------- | ------------------- | ----- |
-| 1    | Hôm nay trời rất đẹp                 | Thời tiết hôm nay thật tuyệt              | High    | -0.1177             | Sai   |
-| 2    | Tôi thích học lập trình Python       | Con mèo đang ngủ trên ghế                 | Low     | 0.1352              | Đúng  |
-| 3    | Deep learning là một lĩnh vực của AI | Học sâu là một nhánh của trí tuệ nhân tạo | High    | 0.0455              | Sai   |
-| 4    | Trái đất quay quanh mặt trời         | Mặt trăng là vệ tinh của Trái đất         | Low     | -0.0039             | Đúng  |
-| 5    | Cơm tấm rất ngon                     | Phở bò là món ăn truyền thống             | Medium  | -0.1810             | Sai   |
+| Pair | Sentence A                           | Sentence B                                | Dự đoán              | Actual Score (MockEmbedder) | Đúng? |
+| ---- | ------------------------------------ | ----------------------------------------- | -------------------- | --------------------------- | ----- |
+| 1    | Hôm nay trời rất đẹp                 | Thời tiết hôm nay thật tuyệt              | High                 | -0.1177                     | Sai   |
+| 2    | Tôi thích học lập trình Python       | Con mèo đang ngủ trên ghế                 | Low                  | 0.1352                      | Đúng  |
+| 3    | Deep learning là một lĩnh vực của AI | Học sâu là một nhánh của trí tuệ nhân tạo | High (Dịch)          | 0.0455                      | Sai   |
+| 4    | Trái đất quay quanh mặt trời         | Mặt trăng là vệ tinh của Trái đất         | Low (Cùng chủ đề)    | -0.0039                     | Đúng  |
+| 5    | Cơm tấm rất ngon                     | Phở bò là món ăn truyền thống             | Medium (Cùng chủ đề) | -0.1810                     | Sai   |
 
 **Kết quả nào bất ngờ nhất? Điều này nói gì về cách embeddings biểu diễn nghĩa?**
 
-Pair 1 và 3 có điểm số thấp hoặc âm. Nguyên nhân là do sử dụng `MockEmbedder` tạo vector ngẫu nhiên cố định. Nó không hiểu ngữ nghĩa. Vì vậy tốt hơn là ta cần một model llm thực sự.
+Kết quả pair 1 và 3 là bất ngờ nhất. Nguyên nhân hẳn là do sử dụng `MockEmbedder` tạo vector ngẫu nhiên cố định, nó không hiểu ngữ nghĩa. Vì vậy tốt hơn là ta cần một model llm thực sự.
+
+Sau khi dùng _sentence_transformers_:
+
+| Pair | Sentence A                           | Sentence B                                | Dự đoán              | Actual Score (Embedding) | Đúng? |
+| :--- | :----------------------------------- | :---------------------------------------- | :------------------- | :----------------------- | ----- |
+| 1    | Hôm nay trời rất đẹp                 | Thời tiết hôm nay thật tuyệt              | High                 | 0.8171                   | Đúng  |
+| 2    | Tôi thích học lập trình Python       | Con mèo đang ngủ trên ghế                 | Low                  | 0.1020                   | Đúng  |
+| 3    | Deep learning là một lĩnh vực của AI | Học sâu là một nhánh của trí tuệ nhân tạo | High (Dịch)          | 0.8452                   | Đúng  |
+| 4    | Trái đất quay quanh mặt trời         | Mặt trăng là vệ tinh của Trái đất         | Low (Cùng chủ đề)    | 0.4737                   | Đúng  |
+| 5    | Cơm tấm rất ngon                     | Phở bò là món ăn truyền thống             | Medium (Cùng chủ đề) | 0.5561                   | Đúng  |
 
 ---
 
@@ -251,15 +265,16 @@ Chạy 5 benchmark queries của nhóm trên implementation cá nhân của bạ
 
 **Điều hay nhất tôi học được từ thành viên khác trong nhóm:**
 
-> _Viết 2-3 câu:_
+- Chunking phụ thuộc vào tài liệu
+- Chunking có thể rất phức tạp
 
 **Điều hay nhất tôi học được từ nhóm khác (qua demo):**
 
-> _Viết 2-3 câu:_
+- Có nhiều kỹ thuật Chunking tiên tiến (nhưng cũng phức tạp)
 
 **Nếu làm lại, tôi sẽ thay đổi gì trong data strategy?**
 
-> _Viết 2-3 câu:_
+- Tìm hiểu các kỹ thuật tinh vi hơn
 
 ---
 
@@ -267,12 +282,12 @@ Chạy 5 benchmark queries của nhóm trên implementation cá nhân của bạ
 
 | Tiêu chí                    | Loại    | Điểm tự đánh giá |
 | --------------------------- | ------- | ---------------- |
-| Warm-up                     | Cá nhân | / 5              |
-| Document selection          | Nhóm    | / 10             |
-| Chunking strategy           | Nhóm    | / 15             |
-| My approach                 | Cá nhân | / 10             |
-| Similarity predictions      | Cá nhân | / 5              |
-| Results                     | Cá nhân | / 10             |
-| Core implementation (tests) | Cá nhân | / 30             |
+| Warm-up                     | Cá nhân | 5/ 5             |
+| Document selection          | Nhóm    | 10/ 10           |
+| Chunking strategy           | Nhóm    | 10/ 15           |
+| My approach                 | Cá nhân | 10/ 10           |
+| Similarity predictions      | Cá nhân | 5/ 5             |
+| Results                     | Cá nhân | 10/ 10           |
+| Core implementation (tests) | Cá nhân | 30/ 30           |
 | Demo                        | Nhóm    | / 5              |
-| **Tổng**                    |         | **/ 100**        |
+| **Tổng**                    |         | 80/ 100          |
