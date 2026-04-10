@@ -53,16 +53,17 @@
 
 - Vì đây là domain có nhiều thuật ngữ chuyên ngành.
 - Đồng thời cũng dễ kiếm, nhiều paper công khai miễn phí.
+- Dữ liệu parse từ pdf, có vẻ khó chunking, nên có thể dùng để so sánh các strategy khác nhau.
 
 ### Data Inventory
 
-| #   | Tên tài liệu              | Nguồn                                   | Số ký tự (ước tính từ nguồn) | Metadata đã gán                                                                          |
-| :-- | :------------------------ | :-------------------------------------- | :--------------------------- | :--------------------------------------------------------------------------------------- |
-| 1   | Battiston et al. - 2020   | Bài đánh giá (Review) khoa học tổng hợp | ~110.000                     | `category`: Khoa học mạng (Network Science); `date`: 03/06/2020; `difficulty`: Khó       |
-| 2   | Cai et al. - 2021         | Nature Communications                   | ~30.000                      | `category`: Thần kinh học (Neuroscience); `date`: 2021; `difficulty`: Trung bình - Khó   |
-| 3   | Deng et al. - 2025        | IEEE Xplore                             | ~15.000                      | `category`: Học sâu (Deep Learning); `date`: 2025; `difficulty`: Trung bình - Khó        |
-| 4   | Ji et al. - 2022          | Information Sciences                    | ~25.000                      | `category`: Đồ thị thông tin (Informatics); `date`: 2022; `difficulty`: Trung bình - Khó |
-| 5   | Rubinov and Sporns - 2010 | NeuroImage                              | ~35.000                      | `category`: Kết nối não bộ (Brain connectivity); `date`: 2010; `difficulty`: Trung bình  |
+| #   | Tên tài liệu              | Nguồn                    | Số ký tự (ước tính từ nguồn) | Metadata đã gán                                                                          |
+| :-- | :------------------------ | :----------------------- | :--------------------------- | :--------------------------------------------------------------------------------------- |
+| 1   | Battiston et al. - 2020   | Review khoa học tổng hợp | 537.821                      | `category`: Khoa học mạng (Network Science); `date`: 03/06/2020; `difficulty`: Khó       |
+| 2   | Cai et al. - 2021         | Nature Communications    | 105.297                      | `category`: Thần kinh học (Neuroscience); `date`: 2021; `difficulty`: Trung bình - Khó   |
+| 3   | Deng et al. - 2025        | IEEE Xplore              | 32.770                       | `category`: Học sâu (Deep Learning); `date`: 2025; `difficulty`: Trung bình - Khó        |
+| 4   | Ji et al. - 2022          | Information Sciences     | 70.524                       | `category`: Đồ thị thông tin (Informatics); `date`: 2022; `difficulty`: Trung bình - Khó |
+| 5   | Rubinov and Sporns - 2010 | NeuroImage               | 51.559                       | `category`: Kết nối não bộ (Brain connectivity); `date`: 2010; `difficulty`: Trung bình  |
 
 ### Metadata Schema
 
@@ -82,23 +83,29 @@
 
 Chạy `ChunkingStrategyComparator().compare()` trên 2-3 tài liệu:
 
-| Tài liệu | Strategy                         | Chunk Count | Avg Length | Preserves Context? |
-| -------- | -------------------------------- | ----------- | ---------- | ------------------ |
-|          | FixedSizeChunker (`fixed_size`)  |             |            |                    |
-|          | SentenceChunker (`by_sentences`) |             |            |                    |
-|          | RecursiveChunker (`recursive`)   |             |            |                    |
+| Tài liệu                    | Strategy                         | Chunk Count | Avg Length | Preserves Context?                             |
+| :-------------------------- | :------------------------------- | :---------- | :--------- | :--------------------------------------------- |
+| **Battiston et al. (2020)** | FixedSizeChunker (`fixed_size`)  | 1.921       | 299.96     | Thường cắt ngang từ/câu                        |
+|                             | SentenceChunker (`by_sentences`) | 1.800       | 297.10     | Mất ngữ cảnh đoạn.                             |
+|                             | RecursiveChunker (`recursive`)   | 2.572       | 209.11     | Ổn hơn, giữ được cấu trúc đoạn văn và tiêu đề. |
+| **Cai et al. (2021)**       | FixedSizeChunker (`fixed_size`)  | 376         | 299.99     | Như trên                                       |
+|                             | SentenceChunker (`by_sentences`) | 470         | 222.74     | Như trên                                       |
+|                             | RecursiveChunker (`recursive`)   | 466         | 225.96     | Như trên                                       |
 
 ### Strategy Của Tôi
 
-**Loại:** [FixedSizeChunker / SentenceChunker / RecursiveChunker / custom strategy]
+**Loại:** RecursiveChunker
 
 **Mô tả cách hoạt động:**
 
-> _Viết 3-4 câu: strategy chunk thế nào? Dựa trên dấu hiệu gì?_
+- Chia nhỏ văn bản một cách đệ quy dựa trên một danh sách các dấu phân tách ưu tiên: `["\n\n", "\n", ". ", " ", ""]`.
+- Đầu tiên,cố chia theo đoạn văn (`\n\n`), sau đó là xuống dòng (`\n`), rồi đến câu (`. `).
+- Nếu vượt quá `chunk_size`, nó sẽ tìm dấu phân tách tiếp theo trong danh sách để chia nhỏ, cho đến khi đạt kích thước mục tiêu.
 
 **Tại sao tôi chọn strategy này cho domain nhóm?**
 
-> _Viết 2-3 câu: domain có pattern gì mà strategy khai thác?_
+- Vì các paper có cấu trúc phân tầng.
+- Recursive có logic chunking ổn hơn so với 2 strategy còn lại.
 
 **Code snippet (nếu custom):**
 
@@ -108,10 +115,12 @@ Chạy `ChunkingStrategyComparator().compare()` trên 2-3 tài liệu:
 
 ### So Sánh: Strategy của tôi vs Baseline
 
-| Tài liệu | Strategy      | Chunk Count | Avg Length | Retrieval Quality? |
-| -------- | ------------- | ----------- | ---------- | ------------------ |
-|          | best baseline |             |            |                    |
-|          | **của tôi**   |             |            |                    |
+| Tài liệu                    | Strategy     | Chunk Count | Avg Length | Retrieval Quality? |
+| --------------------------- | ------------ | ----------- | ---------- | ------------------ |
+| **Battiston et al. (2020)** | fixed_size   | 1,921       | 299.96     | Thấp (cắt vụn từ)  |
+|                             | recursive    | 2,572       | 209.11     | Cao (giữ đoạn)     |
+| **Cai et al. (2021)**       | by_sentences | 470         | 222.74     | Trung bình         |
+|                             | recursive    | 466         | 225.96     | Cao                |
 
 ### So Sánh Với Thành Viên Khác
 
@@ -135,27 +144,27 @@ Giải thích cách tiếp cận của bạn khi implement các phần chính tr
 
 **`SentenceChunker.chunk`** — approach:
 
-> _Viết 2-3 câu: dùng regex gì để detect sentence? Xử lý edge case nào?_
+Dùng regex `(?<=[.!?])\s+` để tách câu dựa trên các dấu kết thúc câu phổ biến. Sau khi tách, các câu được gom nhóm lại thành từng chunk sao cho số lượng câu không vượt quá `max_sentences_per_chunk`. Điều này giúp đảm bảo ngữ cảnh được giữ trọn vẹn trong các ranh giới câu tự nhiên.
 
 **`RecursiveChunker.chunk` / `_split`** — approach:
 
-> _Viết 2-3 câu: algorithm hoạt động thế nào? Base case là gì?_
+Sử dụng thuật toán split đệ quy với danh sách separator ưu tiên `["\n\n", "\n", ". ", " ", ""]`. Nếu một đoạn văn vượt quá `chunk_size`, nó sẽ tìm separator cao nhất hiện có để chia nhỏ. Nếu không còn separator nào thì mới ép buộc cắt theo độ dài (force cut). Base case là khi độ dài văn bản nhỏ hơn hoặc bằng `chunk_size`.
 
 ### EmbeddingStore
 
 **`add_documents` + `search`** — approach:
 
-> _Viết 2-3 câu: lưu trữ thế nào? Tính similarity ra sao?_
+Sử dụng ChromaDB làm backend chính để lưu trữ và truy vấn vector. Trong trường hợp không có ChromaDB, hệ thống tự động fallback về in-memory store dùng danh sách Python. Việc tìm kiếm được thực hiện bằng cách tính `dot product` giữa vector truy vấn và toàn bộ vector trong store (đối với bản in-memory).
 
 **`search_with_filter` + `delete_document`** — approach:
 
-> _Viết 2-3 câu: filter trước hay sau? Delete bằng cách nào?_
+Hỗ trợ pre-filtering dựa trên metadata. Đối với in-memory store, hệ thống duyệt qua toàn bộ record để lọc theo metadata trước khi tính similarity. `delete_document` sẽ xóa toàn bộ các chunks có chứa `doc_id` tương ứng trong metadata của chúng.
 
 ### KnowledgeBaseAgent
 
 **`answer`** — approach:
 
-> _Viết 2-3 câu: prompt structure? Cách inject context?_
+Agent triển khai pattern RAG chuẩn: nhận câu hỏi -> search `top_k` chunks liên quan từ `EmbeddingStore` -> xây dựng prompt bằng cách chèn các chunks này vào phần `Context` -> gọi LLM để tổng hợp câu trả lời dựa trên context đó.
 
 ### Test Results
 
@@ -163,23 +172,25 @@ Giải thích cách tiếp cận của bạn khi implement các phần chính tr
 # Paste output of: pytest tests/ -v
 ```
 
-**Số tests pass:** ** / **
+---> test_results.log
+
+**Số tests pass:** 42 passed in 0.11s
 
 ---
 
 ## 5. Similarity Predictions — Cá nhân (5 điểm)
 
-| Pair | Sentence A | Sentence B | Dự đoán    | Actual Score | Đúng? |
-| ---- | ---------- | ---------- | ---------- | ------------ | ----- |
-| 1    |            |            | high / low |              |       |
-| 2    |            |            | high / low |              |       |
-| 3    |            |            | high / low |              |       |
-| 4    |            |            | high / low |              |       |
-| 5    |            |            | high / low |              |       |
+| Pair | Sentence A                           | Sentence B                                | Dự đoán | Actual Score (Mock) | Đúng? |
+| ---- | ------------------------------------ | ----------------------------------------- | ------- | ------------------- | ----- |
+| 1    | Hôm nay trời rất đẹp                 | Thời tiết hôm nay thật tuyệt              | High    | -0.1177             | Sai   |
+| 2    | Tôi thích học lập trình Python       | Con mèo đang ngủ trên ghế                 | Low     | 0.1352              | Đúng  |
+| 3    | Deep learning là một lĩnh vực của AI | Học sâu là một nhánh của trí tuệ nhân tạo | High    | 0.0455              | Sai   |
+| 4    | Trái đất quay quanh mặt trời         | Mặt trăng là vệ tinh của Trái đất         | Low     | -0.0039             | Đúng  |
+| 5    | Cơm tấm rất ngon                     | Phở bò là món ăn truyền thống             | Medium  | -0.1810             | Sai   |
 
 **Kết quả nào bất ngờ nhất? Điều này nói gì về cách embeddings biểu diễn nghĩa?**
 
-> _Viết 2-3 câu:_
+Pair 1 và 3 có điểm số thấp hoặc âm. Nguyên nhân là do sử dụng `MockEmbedder` tạo vector ngẫu nhiên cố định. Nó không hiểu ngữ nghĩa. Vì vậy tốt hơn là ta cần một model llm thực sự.
 
 ---
 
