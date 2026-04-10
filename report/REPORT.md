@@ -121,12 +121,10 @@ Các file log:
 
 ### So Sánh: Strategy của tôi vs Baseline
 
-| Tài liệu                    | Strategy     | Chunk Count | Avg Length | Retrieval Quality? |
-| --------------------------- | ------------ | ----------- | ---------- | ------------------ |
-| **Battiston et al. (2020)** | fixed_size   | 1,921       | 299.96     | Thấp (cắt vụn từ)  |
-|                             | recursive    | 2,572       | 209.11     | Cao (giữ đoạn)     |
-| **Cai et al. (2021)**       | by_sentences | 470         | 222.74     | Trung bình         |
-|                             | recursive    | 466         | 225.96     | Cao                |
+| Tài liệu                    | Strategy   | Chunk Count | Avg Length | Retrieval Quality? |
+| --------------------------- | ---------- | ----------- | ---------- | ------------------ |
+| **Battiston et al. (2020)** | fixed_size | 1,921       | 299.96     | Thấp (cắt vụn từ)  |
+|                             | recursive  | 2,572       | 209.11     | Cao (giữ đoạn)     |
 
 ### So Sánh Với Thành Viên Khác
 
