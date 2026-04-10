@@ -83,8 +83,8 @@ def run_baseline_analysis():
             logging.info(f"### Strategy: {strategy}")
             logging.info(f"- Number of chunks: {data['count']}")
             logging.info(f"- Average chunk length: {data['avg_length']:.2f}")
-            logging.info("- Sample chunks (first 2):")
-            for i, chunk in enumerate(data["chunks"][:2]):
+            logging.info("- Sample chunks (10th and 11th):")
+            for i, chunk in enumerate(data["chunks"][10:12]):
                 preview = (
                     chunk.replace("\n", " ")[:100] + "..."
                     if len(chunk) > 100
